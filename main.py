@@ -39,7 +39,7 @@ CHANNEL_ID = "@yodgorbek_dev"
 ADMIN_ID = 7325994091
 
 # Post tashlash intervali: Test uchun 40 sekund, keyin 7200 qilasiz
-POST_INTERVAL_SECONDS = 40  # 7200
+POST_INTERVAL_SECONDS = 7200
 
 AUTHOR_SIGNATURE = (
     "✍️ <b>Muallif:</b> <a href='https://t.me/yodgorbek_dev'>BOLTAYEV</a>"
