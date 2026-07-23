@@ -7,7 +7,19 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 from telegram.constants import ParseMode
 from groq import Groq
+# main.py ning eng tepasiga ushbu importni qo'shing:
+from threading import Thread
+from flask import Flask
 
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot ishlamoqda!"
+
+
+def run_flask():
+    app.run(host='0.0.0.0', port=8080)
 # ---------------------------------------------------------
 # SOZLAMALAR (O'z ma'lumotlaringizni kiriting)
 # ---------------------------------------------------------
@@ -221,15 +233,10 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 # MAIN ASYNC ASOSIY QISM
 # ---------------------------------------------------------
-def main():
-    application = Application.builder().token(BOT_TOKEN).build()
-
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CallbackQueryHandler(button_handler))
-
-    logger.info("Bot ishga tushdi...")
-    application.run_polling()
-
-
 if __name__ == "__main__":
+    # Flask veb-serverni orqa fonda yurgizish (Render Web Service o'chirib qo'ymasligi uchun)
+    t = Thread(target=run_flask)
+    t.start()
+
+    # Botni ishga tushirish
     main()
